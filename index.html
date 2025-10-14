@@ -9,13 +9,30 @@
 </head>
 <body>
     <div>
+        <!-- make "Add Entry" button pop open new book entry form -->
         <button>Add Entry</button>
-        <button>View Current Library</button>
-        <button>Reset Current Library</button>
+        <button onclick="displayCurrentLibrary()">View Current Library</button>
+        <!-- clear myLibrary array -->
+        <button onclick="">Reset Current Library</button>
     </div>
     <br>
+    <table id="library-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Read</th>
+            <th>Mark as Read</th>
+            <th>Remove Entry</th>
+          </tr>
+        </thead>
+        <tbody id="library-table-rows">
+          <!-- Rows will be added here by JavaScript -->
+        </tbody>
+      </table>
 
-    <!-- IMPLEMENT FORM, ABS POS -->
+          <!-- IMPLEMENT FORM, ABS POS -->
     <form action="" id="new-book-entry-form" method="post">
       <label for="book-title">Title: </label>
       <input type="text" name="book-title" id="book-title" required>
@@ -28,21 +45,5 @@
       <input type="radio" name="book-read-status" value="no" id="book-read-status-no" checked>No
       <input type="button" value="Submit" id="form-submit-button" onclick="addBookToLibrary()">
     </form>
-
-    <table id="myTable">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Read</th>
-            <th>Mark as Read</th>
-            <th>Remove Entry</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Rows will be added here by JavaScript -->
-        </tbody>
-      </table>
 </body>
 </html>

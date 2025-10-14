@@ -21,6 +21,7 @@ button:hover {
 
 #myTable {
     border: 1em;
+    border-color: black;
 }
 
 th {
