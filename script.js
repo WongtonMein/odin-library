@@ -106,9 +106,20 @@ function clearTableBody() {
   console.log("Rows deleted")
 };
 
+function clearLibrary() {
+  myLibrary.length = 0;
+}
+
 // TO IMPLEMENT
 
-// RESET LIBRARY
+function markReadUnread() {
+  return
+};
+
+function deleteEntry() {
+  return
+};
+
 // MARK ENTRY AS READ/UNREAD
-//// DISPLAY CHECK VS X FOR READ/UNREAD
+//// DISPLAY CHECK VS X FOR READ/UNREAD --- CSS
 // DELETE SINGLE ENTRY
