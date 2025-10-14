@@ -11,14 +11,17 @@ function Book(title, author, pages, readStatus) {
   this.readStatus = readStatus;
 };
 
-// #region SAMPLE LIBRARY
+// #region SAMPLE BOOKS
 
-const mySampleLibrary = [];
+addSampleBooksToLibrary("book 1", "author 1", 123, true, myLibrary);
+addSampleBooksToLibrary("book 2", "author 2", 234, false, myLibrary);
+addSampleBooksToLibrary("book 3", "author 3", 345, false, myLibrary);
+addSampleBooksToLibrary("book 4", "author 4", 456, true, myLibrary);
 
-addBookToLibrary("book 1", "author 1", 123, true, mySampleLibrary);
-addBookToLibrary("book 2", "author 2", 234, false, mySampleLibrary);
-addBookToLibrary("book 3", "author 3", 345, false, mySampleLibrary);
-addBookToLibrary("book 4", "author 4", 456, true, mySampleLibrary);
+function addSampleBooksToLibrary(title, author, pages, readStatus) {
+  // take params, create a book then store it in the array
+  myLibrary.push(createBook(title, author, pages, readStatus));
+};
 
 // #endregion
 
@@ -28,24 +31,42 @@ function createBook(title, author, pages, readStatus) {
   return new Book(title, author, pages, readStatus);
 };
 
-function addBookToLibrary(title, author, pages, readStatus, library) {
+function addBookToLibrary(title, author, pages, readStatus) {
   // take params, create a book then store it in the array
-  library.push(createBook(title, author, pages, readStatus));
+  myLibrary.push(processNewBookInputs());
 };
 
-function printLibrary(library) {
-  for (let i = 0; i < library.length; i++) {
+function printLibrary() {
+  for (let i = 0; i < myLibrary.length; i++) {
     let listDetails = true;
 
     if (listDetails === true) {
-      console.log(library[i]);
+      console.log(myLibrary[i]);
     } else {
-      console.log(library[i].uniqueID);
-      console.log(library[i].title);
-      console.log(library[i].author);
-      console.log(library[i].pages);
-      console.log(library[i].readStatus);
+      console.log(myLibrary[i].uniqueID);
+      console.log(myLibrary[i].title);
+      console.log(myLibrary[i].author);
+      console.log(myLibrary[i].pages);
+      console.log(myLibrary[i].readStatus);
       console.log("-------")
     };
   };
+};
+
+function processNewBookInputs() {
+  // store inputs in variables
+  let title = document.getElementById("book-title").value;
+  let author = document.getElementById("book-author").value;
+  let pages = document.getElementById("book-page-count").valueAsNumber;
+
+  let readStatus
+
+  if (document.getElementById("book-read-status-yes").checked) {
+    readStatus = true
+  } else if (document.getElementById("book-read-status-no").checked) {
+    readStatus = false
+  };
+
+  // createBook
+  return createBook(title, author, pages, readStatus);
 };
