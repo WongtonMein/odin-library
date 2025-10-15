@@ -34,24 +34,26 @@ function createBook(title, author, pages, readStatus) {
 function addBookToLibrary() {
   // take params, create a book then store it in the array
   myLibrary.push(processNewBookInputs());
+  console.log("New book added")
 };
 
-function printLibrary() {
-  for (let i = 0; i < myLibrary.length; i++) {
-    let listDetails = true;
+// OLD FUNCTION USED FOR EARLY TESTING
+// function printLibrary() {
+//   for (let i = 0; i < myLibrary.length; i++) {
+//     let listDetails = true;
 
-    if (listDetails === true) {
-      console.log(myLibrary[i]);
-    } else {
-      console.log(myLibrary[i].uniqueID);
-      console.log(myLibrary[i].title);
-      console.log(myLibrary[i].author);
-      console.log(myLibrary[i].pages);
-      console.log(myLibrary[i].readStatus);
-      console.log("-------")
-    };
-  };
-};
+//     if (listDetails === true) {
+//       console.log(myLibrary[i]);
+//     } else {
+//       console.log(myLibrary[i].uniqueID);
+//       console.log(myLibrary[i].title);
+//       console.log(myLibrary[i].author);
+//       console.log(myLibrary[i].pages);
+//       console.log(myLibrary[i].readStatus);
+//       console.log("-------")
+//     };
+//   };
+// };
 
 function processNewBookInputs() {
   // store inputs in variables
@@ -60,12 +62,11 @@ function processNewBookInputs() {
   let pages = document.getElementById("book-page-count").valueAsNumber;
   let readStatus
 
-  if (document.getElementById("book-read-status-yes").checked) {
-    readStatus = true
-  } else if (document.getElementById("book-read-status-no").checked) {
-    readStatus = false
-  };
-
+  if (document.getElementById("book-read-status").checked) {
+    readStatus = true;
+  } else {
+    readStatus = false;
+  }
   return createBook(title, author, pages, readStatus);
 };
 
@@ -75,23 +76,6 @@ function displayCurrentLibrary() {
   clearTableBody();
   populateTable();
 }
-
-function populateTable() {
-  const library = document.getElementById("library-table-rows");
-
-  myLibrary.forEach(book => {
-    const row = library.insertRow();
-    const titleCell = row.insertCell();
-    titleCell.textContent = book.title;
-    const authorCell = row.insertCell();
-    authorCell.textContent = book.author;
-    const pageCountCell = row.insertCell();
-    pageCountCell.textContent = book.pages;
-    const readStatusCell = row.insertCell();
-    readStatusCell.textContent = book.readStatus;
-  });
-  console.log("Current library displayed")
-};
 
 function clearTableBody() {
   const library = document.getElementById("library-table");
@@ -106,9 +90,36 @@ function clearTableBody() {
   console.log("Rows deleted")
 };
 
+function populateTable() {
+  const library = document.getElementById("library-table-rows");
+
+  myLibrary.forEach(book => {
+    const row = library.insertRow();
+
+    const titleCell = row.insertCell();
+    titleCell.textContent = book.title;
+    titleCell.style.border = "1px solid black"
+
+    const authorCell = row.insertCell();
+    authorCell.textContent = book.author;
+    authorCell.style.border = "1px solid black"
+
+    const pageCountCell = row.insertCell();
+    pageCountCell.textContent = book.pages;
+    pageCountCell.style.border = "1px solid black"
+
+    const readStatusCell = row.insertCell();
+    readStatusCell.textContent = book.readStatus;
+    readStatusCell.style.border = "1px solid black"
+
+  });
+  console.log("Current library displayed")
+};
+
 function clearLibrary() {
   myLibrary.length = 0;
-}
+  console.log("myLibrary deleted")
+};
 
 // TO IMPLEMENT
 
@@ -123,3 +134,4 @@ function deleteEntry() {
 // MARK ENTRY AS READ/UNREAD
 //// DISPLAY CHECK VS X FOR READ/UNREAD --- CSS
 // DELETE SINGLE ENTRY
+// ADD "ADD NEW ENTRY" JS FUNCTION
