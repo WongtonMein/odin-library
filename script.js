@@ -33,8 +33,14 @@ function createBook(title, author, pages, readStatus) {
 
 function addBookToLibrary() {
   // take params, create a book then store it in the array
-  myLibrary.push(processNewBookInputs());
-  console.log("New book added")
+  let newBook = processNewBookInputs()
+  console.log(newBook)
+  if (newBook === undefined) {
+    return
+  } else {
+    myLibrary.push(newBook);
+    console.log("New book added");
+  } 
 };
 
 // OLD FUNCTION USED FOR EARLY TESTING
@@ -62,12 +68,24 @@ function processNewBookInputs() {
   let pages = document.getElementById("book-page-count").valueAsNumber;
   let readStatus
 
+  console.log(title);
+  console.log(author);
+  console.log(pages);
+
   if (document.getElementById("book-read-status").checked) {
     readStatus = true;
   } else {
     readStatus = false;
   }
-  return createBook(title, author, pages, readStatus);
+
+  if (title == "" || author == "" || pages == NaN) {
+    title = ""
+    author = ""
+    pages = ""
+    return
+  } else {
+    return createBook(title, author, pages, readStatus);
+  }
 };
 
 // LIBRARY DISPLAY FUNCTIONS

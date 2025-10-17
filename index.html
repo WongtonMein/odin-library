@@ -6,6 +6,9 @@
     <title>Odin Library</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Odin Library</h1>
@@ -52,7 +55,7 @@
           <label for="book-read-status">Read? </label>
           <input type="checkbox" name="book-read-status" id="book-read-status">
         </div>
-        <input type="button" value="Submit" id="form-submit-button" onclick="addBookToLibrary()">
+        <input type="button" value="Submit" id="form-submit-button" onclick="addBookToLibrary(); document.getElementById('new-book-entry-form').reset()">
       </form>
     </div>
 </body>
