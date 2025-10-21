@@ -53,15 +53,16 @@ tbody tr:hover {
     background-color: rgb(196, 196, 196);
 }
 
-form#new-book-entry-form {
+dialog#new-book-dialog {
     position: absolute;
-    height: 200px;
-    width: 500px;
     top: 50px;
     left: 50%;
     transform: translate(-50%, 20%);
+    border-radius: 10px;
+}
 
-    border: 0.1em solid black;
+form#new-book-entry-form {
+    border: 0.2em solid black;
     border-radius: 10px;
     padding: 50px;
     box-shadow: 1 1px black;

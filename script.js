@@ -25,6 +25,17 @@ function addSampleBooksToLibrary(title, author, pages, readStatus) {
 
 // #endregion
 
+// MODAL DIALOG FUNCTIONS
+const newBookModal = document.getElementById("new-book-modal");
+const newBookDialog = document.getElementById("new-book-dialog");
+
+
+newBookModal.addEventListener("click", (event) => {
+  newBookDialog.showModal();
+
+});
+
+
 // LIBRARY FUNCTIONS
 
 function createBook(title, author, pages, readStatus) {
@@ -108,6 +119,7 @@ function clearTableBody() {
   console.log("Rows deleted")
 };
 
+// REVISIT THIS FXN FOR STYLING (CELL WIDTH, TEXT ALIGNMENT, )BATT
 function populateTable() {
   const library = document.getElementById("library-table-rows");
 
@@ -141,15 +153,18 @@ function clearLibrary() {
 
 // TO IMPLEMENT
 
+// MARK ENTRY AS READ/UNREAD
+//// DISPLAY CHECK VS X FOR READ/UNREAD --- CSS
 function markReadUnread() {
   return
 };
 
+// DELETE SINGLE ENTRY
 function deleteEntry() {
   return
 };
 
-// MARK ENTRY AS READ/UNREAD
-//// DISPLAY CHECK VS X FOR READ/UNREAD --- CSS
-// DELETE SINGLE ENTRY
 // ADD "ADD NEW ENTRY" JS FUNCTION
+function addNewEntry() {
+  return
+};
