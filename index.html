@@ -15,12 +15,12 @@
     <div class="container">
       <div class="function-buttons">
           <!-- make "Add Entry" button pop open new book entry form -->
-          <button id="new-book-modal">Add Entry</button>
-          <button onclick="displayCurrentLibrary()">View Current Library</button>
+          <button class="header-function-button" id="new-book-modal">Add Entry</button>
+          <button class="header-function-button" onclick="displayCurrentLibrary()">View Current Library</button>
           <!-- clear myLibrary array -->
-          <button onclick="clearLibrary(); displayCurrentLibrary()">Reset Current Library</button>
+          <button class="header-function-button" onclick="clearLibrary(); displayCurrentLibrary()">Reset Current Library</button>
       </div>
-      <!-- <br> -->
+
       <table id="library-table">
           <thead>
             <tr>
@@ -37,7 +37,6 @@
           </tbody>
         </table>
 
-      <!-- FORM DISABLED WHILE POSITIONING OTHER ELEMENTS -->
        <dialog id="new-book-dialog">
         <form action="" id="new-book-entry-form" method="post">
           <div class="form-element">
@@ -56,7 +55,7 @@
             <label for="book-read-status">Read? </label>
             <input type="checkbox" name="book-read-status" id="book-read-status">
           </div>
-          <input type="button" value="Submit" id="form-submit-button" onclick="addBookToLibrary(); document.getElementById('new-book-entry-form').reset()">
+          <button type="submit" id="form-submit-button" onclick="addBookToLibrary(); document.getElementById('new-book-entry-form').reset()">Submit</button>
         </form>
       </dialog>
     </div>

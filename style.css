@@ -24,14 +24,16 @@ h1 {
     margin: 50px;
 }
 
-button {
+/* LIBRARY TABLE CSS */
+
+.header-function-button {
     padding: 10px 30px;
     border-radius: 10px;
     min-width: 200px;
     background-color: rgb(196, 196, 196);
 }
 
-button:hover {
+.header-function-button:hover {
     background-color: gray;
 }
 
@@ -50,8 +52,14 @@ th {
 }
 
 tbody tr:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+.mark-read-unread-button:hover {
     background-color: rgb(196, 196, 196);
 }
+
+/* MODAL DIALOG FORM CSS */
 
 dialog#new-book-dialog {
     position: absolute;
@@ -86,7 +94,7 @@ input[type="text"], input[type="number"] {
     border-radius: 2px;
 }
 
-input[type="button"] {
+button[type="submit"] {
     width: 100px;
     height: 50px;
     padding: 10px 20px;
@@ -95,6 +103,6 @@ input[type="button"] {
     border-radius: 5px;
 }
 
-input[type="button"]:hover {
+button[type="submit"]:hover {
     background-color: gray;
 }

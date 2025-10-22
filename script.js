@@ -1,4 +1,4 @@
-// LIBRARY ARRAY
+// LIBRARY CONSTANTS
 const myLibrary = [];
 
 // BOOK CONSTRUCTOR
@@ -25,18 +25,22 @@ function addSampleBooksToLibrary(title, author, pages, readStatus) {
 
 // #endregion
 
-// MODAL DIALOG FUNCTIONS
+// #region MODAL DIALOG FUNCTIONS
 const newBookModal = document.getElementById("new-book-modal");
 const newBookDialog = document.getElementById("new-book-dialog");
-
+const submitNewBook = document.getElementById("form-submit-button");
 
 newBookModal.addEventListener("click", (event) => {
   newBookDialog.showModal();
-
 });
 
+submitNewBook.addEventListener("click", (event) => {
+  newBookDialog.close();
+})
 
-// LIBRARY FUNCTIONS
+// #endregion
+
+// #region LIBRARY FUNCTIONS
 
 function createBook(title, author, pages, readStatus) {
   return new Book(title, author, pages, readStatus);
@@ -99,7 +103,9 @@ function processNewBookInputs() {
   }
 };
 
-// LIBRARY DISPLAY FUNCTIONS
+// #endregion
+
+// #region LIBRARY DISPLAY FUNCTIONS
 
 function displayCurrentLibrary() {
   clearTableBody();
@@ -119,29 +125,81 @@ function clearTableBody() {
   console.log("Rows deleted")
 };
 
-// REVISIT THIS FXN FOR STYLING (CELL WIDTH, TEXT ALIGNMENT, )BATT
+function formatCell(cell) {
+  cell.style.border = "1px solid black";
+  cell.style.padding = "5px";
+  cell.style.maxWidth = "150px";
+  cell.style.textOverflow = "ellipsis";
+  cell.style.overflow = "hidden";
+  cell.style.whiteSpace = "no-wrap";
+};
+
+function formatBtnImg(cell) {
+  cell.style.textAlign = "center";
+  cell.style.verticalAlign = "middle";
+};
+
 function populateTable() {
   const library = document.getElementById("library-table-rows");
 
   myLibrary.forEach(book => {
     const row = library.insertRow();
 
+    // Book Title
     const titleCell = row.insertCell();
     titleCell.textContent = book.title;
-    titleCell.style.border = "1px solid black"
+    formatCell(titleCell);
 
+    // Book Author
     const authorCell = row.insertCell();
     authorCell.textContent = book.author;
-    authorCell.style.border = "1px solid black"
+    formatCell(authorCell);
 
+    // Book Pages
     const pageCountCell = row.insertCell();
     pageCountCell.textContent = book.pages;
-    pageCountCell.style.border = "1px solid black"
+    formatCell(pageCountCell);
+
+    // Book Read Status
+    const checkImg = document.createElement("img");
+    checkImg.src = "./images/check.svg"; // CHECK ICON SVG
+    
+    const xImg = document.createElement("img");
+    xImg.src = "./images/x.svg"; // X ICON SVG
 
     const readStatusCell = row.insertCell();
-    readStatusCell.textContent = book.readStatus;
-    readStatusCell.style.border = "1px solid black"
+    if (book.readStatus === true) {
+      readStatusCell.appendChild(checkImg)
+    } else if (book.readStatus === false) {
+      readStatusCell.appendChild(xImg)
+    };
+    formatCell(readStatusCell);
+    formatBtnImg(readStatusCell);
 
+    // Book Mark Read/Unread Button
+    const markReadBtn = document.createElement("button");
+    if (book.readStatus === true) {
+      markReadBtn.textContent = "Mark Unread";
+    } else {
+      markReadBtn.textContent = "Mark Read";
+    };
+    markReadBtn.style.minWidth = "100px";
+    markReadBtn.style.padding = "5px";
+    markReadBtn.style.borderRadius = "5px";
+    markReadBtn.className = "mark-read-unread-button";
+
+    const markReadStatusCell = row.insertCell();
+    markReadStatusCell.appendChild(markReadBtn);
+    formatCell(markReadStatusCell);
+    formatBtnImg(markReadStatusCell);
+
+    // Book Delete Button
+    const delImg = document.createElement("img");
+    delImg.src = "./images/trash-2.svg"; // TRASH ICON SVG
+    const delBtnCell = row.insertCell();
+    delBtnCell.appendChild(delImg);
+    formatCell(delBtnCell);
+    formatBtnImg(delBtnCell);
   });
   console.log("Current library displayed")
 };
@@ -150,6 +208,8 @@ function clearLibrary() {
   myLibrary.length = 0;
   console.log("myLibrary deleted")
 };
+
+// #endregion
 
 // TO IMPLEMENT
 
