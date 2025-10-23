@@ -4,11 +4,19 @@ const myLibrary = [];
 // BOOK CONSTRUCTOR
 function Book(title, author, pages, readStatus) {
   // the constructor...
-  this.uniqueID = crypto.randomUUID();
+  this.uniqueId = crypto.randomUUID();
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.readStatus = readStatus;
+
+  this.toggleReadStatus = function() {
+    if (this.readStatus === true) {
+      this.readStatus = false;
+    } else if (this.readStatus === false) {
+      this.readStatus = true;
+    };
+  };
 };
 
 // #region SAMPLE BOOKS
@@ -145,6 +153,9 @@ function populateTable() {
   myLibrary.forEach(book => {
     const row = library.insertRow();
 
+    // Data Attribute - Book Unique ID
+    row.dataset.uniqueId = book.uniqueId;
+
     // Book Title
     const titleCell = row.insertCell();
     titleCell.textContent = book.title;
@@ -176,7 +187,7 @@ function populateTable() {
     formatCell(readStatusCell);
     formatBtnImg(readStatusCell);
 
-    // Book Mark Read/Unread Button
+    // Mark Read/Unread Button
     const markReadBtn = document.createElement("button");
     if (book.readStatus === true) {
       markReadBtn.textContent = "Mark Unread";
@@ -193,7 +204,7 @@ function populateTable() {
     formatCell(markReadStatusCell);
     formatBtnImg(markReadStatusCell);
 
-    // Book Delete Button
+    // Delete Button
     const delImg = document.createElement("img");
     delImg.src = "./images/trash-2.svg"; // TRASH ICON SVG
     const delBtnCell = row.insertCell();
@@ -215,16 +226,19 @@ function clearLibrary() {
 
 // MARK ENTRY AS READ/UNREAD
 //// DISPLAY CHECK VS X FOR READ/UNREAD --- CSS
-function markReadUnread() {
-  return
+function markReadUnread(book) {
+  book.toggleReadStatus()
 };
 
+
+// ASSIGN AND USE DATA ATTRIBUTE (UNIQUEID) TO HANDLE
 // DELETE SINGLE ENTRY
 function deleteEntry() {
   return
 };
 
+// DON'T THINK I NEED THIS NOW
 // ADD "ADD NEW ENTRY" JS FUNCTION
-function addNewEntry() {
-  return
-};
+// function addNewEntry() {
+//   return
+// };
