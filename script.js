@@ -198,7 +198,7 @@ function populateTable() {
     markReadBtn.style.padding = "5px";
     markReadBtn.style.borderRadius = "5px";
     markReadBtn.className = "mark-read-unread-button";
-
+    
     const markReadStatusCell = row.insertCell();
     markReadStatusCell.appendChild(markReadBtn);
     formatCell(markReadStatusCell);
@@ -207,8 +207,15 @@ function populateTable() {
     // Delete Button
     const delImg = document.createElement("img");
     delImg.src = "./images/trash-2.svg"; // TRASH ICON SVG
+    delImg.dataset.uniqueId = book.uniqueId;
+    delImg.classList.add("del-img");
+
+    const delImgBtn = document.createElement("button");
+    delImgBtn.classList.add("del-img-btn");
+    delImgBtn.appendChild(delImg)
+
     const delBtnCell = row.insertCell();
-    delBtnCell.appendChild(delImg);
+    delBtnCell.appendChild(delImgBtn);
     formatCell(delBtnCell);
     formatBtnImg(delBtnCell);
   });
@@ -233,9 +240,29 @@ function markReadUnread(book) {
 
 // ASSIGN AND USE DATA ATTRIBUTE (UNIQUEID) TO HANDLE
 // DELETE SINGLE ENTRY
-function deleteEntry() {
-  return
+// function deleteEntry(row, delBtn) {
+//   if (row.uniqueId === delBtn.uniqueId) {
+//     bookIndex = myLibrary.indexOf(delBtn.uniqueId);
+//     console.log(bookIndex);
+//     // console.log(`${myLibrary[bookIndex].title} deleted`)
+//     myLibrary.splice(bookIndex, 1);
+//   };
+// };
+
+function deleteEntry(delImg) {
+  if (myLibrary.indexOf(delImg.uniqueId) != -1) {
+    bookIndex = myLibrary.indexOf(delImg.uniqueId);
+    console.log(bookIndex);
+    console.log(`${myLibrary[bookIndex].title} deleted`);
+    myLibrary.splice(bookIndex, 1);
+  };
 };
+
+let delImg = document.querySelector(".del-img");
+let delImgBtn = document.querySelector(".del-img-btn");
+delImgBtn.addEventListener("click", deleteEntry(delImg));
+
+
 
 // DON'T THINK I NEED THIS NOW
 // ADD "ADD NEW ENTRY" JS FUNCTION

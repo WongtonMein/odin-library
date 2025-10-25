@@ -59,6 +59,22 @@ tbody tr:hover {
     background-color: rgb(196, 196, 196);
 }
 
+.mark-read-unread-button:active {
+    background-color: rgb(166, 209, 250);
+}
+
+.del-img-btn {
+    border-radius: 5px;
+}
+
+.del-img-btn:hover {
+    background-color: rgb(196, 196, 196);
+}
+
+.del-img-btn:active {
+    background-color: rgb(250, 166, 166);
+}
+
 /* MODAL DIALOG FORM CSS */
 
 dialog#new-book-dialog {
