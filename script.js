@@ -19,6 +19,7 @@ function Book(title, author, pages, readStatus) {
   };
 };
 
+
 // #region SAMPLE BOOKS
 
 addSampleBooksToLibrary("sample book 1", "author 1", 123, true, myLibrary);
@@ -207,12 +208,17 @@ function populateTable() {
     // Delete Button
     const delImg = document.createElement("img");
     delImg.src = "./images/trash-2.svg"; // TRASH ICON SVG
-    delImg.dataset.uniqueId = book.uniqueId;
     delImg.classList.add("del-img");
 
     const delImgBtn = document.createElement("button");
+    delImgBtn.dataset.uniqueId = book.uniqueId;
     delImgBtn.classList.add("del-img-btn");
     delImgBtn.appendChild(delImg)
+
+    delImgBtn.addEventListener("click", function(e) {
+      deleteEntry(delImgBtn.dataset.uniqueId);
+      displayCurrentLibrary();
+    });
 
     const delBtnCell = row.insertCell();
     delBtnCell.appendChild(delImgBtn);
@@ -227,6 +233,15 @@ function clearLibrary() {
   console.log("myLibrary deleted")
 };
 
+function deleteEntry(bookId) {
+  for (let book of myLibrary) {
+    if (book.uniqueId === bookId) {
+      console.log(`${book.title} deleted`)
+      myLibrary.splice(myLibrary.indexOf(book), 1);
+    };
+  };
+};
+
 // #endregion
 
 // TO IMPLEMENT
@@ -237,35 +252,7 @@ function markReadUnread(book) {
   book.toggleReadStatus()
 };
 
+// #region DEFAULTS
+displayCurrentLibrary();
 
-// ASSIGN AND USE DATA ATTRIBUTE (UNIQUEID) TO HANDLE
-// DELETE SINGLE ENTRY
-// function deleteEntry(row, delBtn) {
-//   if (row.uniqueId === delBtn.uniqueId) {
-//     bookIndex = myLibrary.indexOf(delBtn.uniqueId);
-//     console.log(bookIndex);
-//     // console.log(`${myLibrary[bookIndex].title} deleted`)
-//     myLibrary.splice(bookIndex, 1);
-//   };
-// };
-
-function deleteEntry(delImg) {
-  if (myLibrary.indexOf(delImg.uniqueId) != -1) {
-    bookIndex = myLibrary.indexOf(delImg.uniqueId);
-    console.log(bookIndex);
-    console.log(`${myLibrary[bookIndex].title} deleted`);
-    myLibrary.splice(bookIndex, 1);
-  };
-};
-
-let delImg = document.querySelector(".del-img");
-let delImgBtn = document.querySelector(".del-img-btn");
-delImgBtn.addEventListener("click", deleteEntry(delImg));
-
-
-
-// DON'T THINK I NEED THIS NOW
-// ADD "ADD NEW ENTRY" JS FUNCTION
-// function addNewEntry() {
-//   return
-// };
+// #endregion
