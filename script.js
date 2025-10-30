@@ -199,6 +199,10 @@ function populateTable() {
     markReadBtn.style.padding = "5px";
     markReadBtn.style.borderRadius = "5px";
     markReadBtn.className = "mark-read-unread-button";
+    markReadBtn.addEventListener("click", function() {
+      book.toggleReadStatus();
+      displayCurrentLibrary();
+    })
     
     const markReadStatusCell = row.insertCell();
     markReadStatusCell.appendChild(markReadBtn);
