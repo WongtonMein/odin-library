@@ -19,7 +19,6 @@ function Book(title, author, pages, readStatus) {
   };
 };
 
-
 // #region SAMPLE BOOKS
 
 addSampleBooksToLibrary("sample book 1", "author 1", 123, true, myLibrary);
@@ -66,24 +65,6 @@ function addBookToLibrary() {
     console.log("New book added");
   } 
 };
-
-// OLD FUNCTION USED FOR EARLY TESTING
-// function printLibrary() {
-//   for (let i = 0; i < myLibrary.length; i++) {
-//     let listDetails = true;
-
-//     if (listDetails === true) {
-//       console.log(myLibrary[i]);
-//     } else {
-//       console.log(myLibrary[i].uniqueID);
-//       console.log(myLibrary[i].title);
-//       console.log(myLibrary[i].author);
-//       console.log(myLibrary[i].pages);
-//       console.log(myLibrary[i].readStatus);
-//       console.log("-------")
-//     };
-//   };
-// };
 
 function processNewBookInputs() {
   // store inputs in variables
@@ -247,14 +228,6 @@ function deleteEntry(bookId) {
 };
 
 // #endregion
-
-// TO IMPLEMENT
-
-// MARK ENTRY AS READ/UNREAD
-//// DISPLAY CHECK VS X FOR READ/UNREAD --- CSS
-function markReadUnread(book) {
-  book.toggleReadStatus()
-};
 
 // #region DEFAULTS
 displayCurrentLibrary();
