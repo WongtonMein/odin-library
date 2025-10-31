@@ -8,4 +8,5 @@ Objectives:
  - Have fun
 
 Challenges: 
- - TBD
+ - Delete functionality on a per line basis. Needed to add individual addEventListeners to each delete button
+ - Mark Read/Unreal function on a per line basis. Same as above
